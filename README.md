@@ -1,5 +1,5 @@
-# Holberton School Cinema Guru API
-This is a simple movies API dedicated for Holberton School React Project Holberton School Cinema Guru
+# Atlas Cinema Guru
+A pocket movie app built with React in which users can keep track of their favorite movied, and set up a watch later list. 
 
 ## Learning Objectives
 
