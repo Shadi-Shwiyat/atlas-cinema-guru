@@ -1,0 +1,159 @@
+/* ------ Input.js component ------ */
+
+.input-container {
+  text-align: start;
+  max-width: 354px;
+}
+
+.input-label {
+  text-align: start;
+  font-size: 19px;
+}
+
+.input-label-container {
+  margin-bottom: 3px;
+  display: flex;
+}
+
+.input-icon {
+  margin-right: 8px;
+  color: #bb000c78;
+  width: 19px;
+  height: 23px;
+}
+
+.input-container input[type='text'] {
+  font-size: 19px;
+  padding: 3px;
+  width: 354px;
+  border: none;
+  border-bottom: 2px solid #BB000E;
+}
+
+.input-container input[type='number'] {
+  font-size: 19px;
+  padding: 3px;
+  color: #ffffff;
+  width: 204px;
+  border: none;
+  border-bottom: 2px solid #BB000E;
+  background-color: #2C2C2C;
+}
+
+.number-label {
+  color: #ffffff;
+}
+
+/* -------------------------------- */
+
+/* ------ SelectInput.js component ------ */
+
+.select-input-container {
+  display: flex;
+  flex-direction: column;
+  width: 204px;
+}
+
+.select-input-container label {
+  font-size: 19px;
+  margin-bottom: 3px;
+  color: #ffffff;
+}
+
+.select-input-container select {
+  padding: 3px;
+  font-size: 19px;
+  color: #ffffff;
+  background-color: #2C2C2C;
+  border: none;
+  border-bottom: 2px solid #BB000E;
+}
+
+.select-input-container option {
+  font-size: 19px;
+  padding: 3px;
+}
+
+/* -------------------------------------- */
+
+/* ------ Button.js component ------ */
+
+.button {
+  font-size: 19px;
+  color: #ffffff;
+  padding: 13px;
+  border: none;
+  background-color: #BB000E;
+}
+
+.button:hover {
+  background-color: #E31C25;
+  cursor: pointer;
+}
+
+.sign-on-button {
+  font-size: 19px;
+  color: #ffffff;
+  padding: 13px;
+  border: none;
+  background-color: #BB000E;
+}
+
+.sign-on-button:hover {
+  background-color: #E31C25;
+  cursor: pointer;
+}
+
+.button-icon {
+  margin-right: 13px;
+  margin-left: 3px;
+}
+
+/* --------------------------------- */
+
+/* ------ SearchBar.js component ------ */
+
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search-bar {
+  background-color: #2C2C2C;
+  border-radius: 90px;
+  padding: 9px 9px 9px 43px;
+  font-size: 19px;
+  color: #ffffff;
+  border: none;
+  width: 535px;
+}
+
+.search-icon {
+  color: #b8b8b8;
+  width: 23px;
+  height: 23px;
+  position: absolute;
+  left: 13px;
+  pointer-events: none;
+  transition: color 0.3s;
+}
+
+.search-bar-container input:hover {
+  cursor: pointer;
+}
+
+.search-bar-container input::placeholder {
+  color: #b8b8b8;
+  transition: color 0.3s;
+}
+
+.search-bar-container input:hover::placeholder {
+  color: #ffffff;
+}
+
+.search-bar-container:hover .search-icon {
+  color: #ffffff;
+}
+
+/* ------------------------------------ */

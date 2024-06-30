@@ -2,7 +2,7 @@ import React from 'react';
 import './general.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function Input({
+function Input({
   label,
   type,
   className,
@@ -17,20 +17,21 @@ export default function Input({
     }
 
     return (
-      <>
-        {label && <label>{label}</label>}
-        <div className='input-container'>
+      <div className='input-container'>
+        <div className='input-label-container'>
           {icon && <FontAwesomeIcon icon={icon} className='input-icon'></FontAwesomeIcon>}
-          <input
-          type={type}
-          className={className}
-          value={value}
-          {...inputAttributes}
-          onChange={handleInput}
-          >
-          </input>
+          {label && <label className={`input-label ${type == 'number' ? 'number-label' : ''}`}>{label}</label>}
         </div>
-      </>
+        <input
+        type={type}
+        className={className}
+        value={value}
+        {...inputAttributes}
+        onChange={handleInput}
+        >
+        </input>
+      </div>
     )
   }
-  
+
+  export default Input;
