@@ -2,14 +2,15 @@ import React from 'react';
 import './general.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export function Input({
+export default function Input({
   label,
   type,
   className,
   value,
   setValue,
-  icon,
-  inputAttributes,}) {
+  icon = null,
+  inputAttributes = null,
+}) {
     const handleInput = (e) => {
       e.preventDefault();
       setValue(e.target.value);
