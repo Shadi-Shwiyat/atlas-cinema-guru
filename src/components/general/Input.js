@@ -13,6 +13,7 @@ function Input({
 }) {
     const handleInput = (e) => {
       e.preventDefault();
+      // console.log('handleInput is being called!');
       setValue(e.target.value);
     }
 

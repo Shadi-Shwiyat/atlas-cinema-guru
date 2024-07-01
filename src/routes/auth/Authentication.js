@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Button from '../../components/general/Button.js';
-import { faKey } from '@fortawesome/free-solid-svg-icons';
+import Login from './Login.js';
+import Register from './Register.js';
 import './auth.css';
-;
 
 export default function Authentication({
   setIsLoggedIn,
@@ -40,6 +40,17 @@ export default function Authentication({
         onClick={signupClick}
         />
       </div>
+      {_switch == true ? <Login
+      username={username}
+      password={password}
+      setUsername={setUsername}
+      setPassword={setPassword}
+      /> : <Register
+      username={username}
+      password={password}
+      setUsername={setUsername}
+      setPassword={setPassword}
+      />}
     </form>
   )
 }
