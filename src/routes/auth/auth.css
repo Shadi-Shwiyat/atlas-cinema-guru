@@ -1,0 +1,31 @@
+/* ------ Auth.js ------ */
+
+.auth-form {
+  width: 490px;
+  height: 390px;
+}
+
+.button-container {
+  width: 490px;
+  height: 60px;
+  /* background-color: black; */
+}
+
+.switch-button {
+  border: none;
+  background-color: #BB000E;
+  color: #fff;
+  font-size: 19px;
+  width: 245px;
+  height: 60px;
+}
+
+.switch-button:hover {
+  cursor: pointer;
+}
+
+.highlight {
+  background-color: #E31C25;
+}
+
+/* --------------------- */

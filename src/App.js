@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Authentication from './routes/auth/Authentication';
 import './App.css';
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* {isLoggedIn ? <Dashboard /> : <Authentication />} */}
+      {isLoggedIn ? <Dashboard /> : <Authentication />}
     </div>
   );
 }
