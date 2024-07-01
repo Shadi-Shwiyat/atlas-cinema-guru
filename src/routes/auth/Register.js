@@ -13,7 +13,7 @@ export default function Login({
   setPassword,
 }) {
   const handleSignUp = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     // console.log('Sign Up clicked!');
     // console.log('Username Value is:', username);
     // console.log('Password Value is:', password);
@@ -24,28 +24,28 @@ export default function Login({
       <p className='sign-on-header'>Create a new account</p>
       <div className='sign-on-input-container'>
         <Input
-        label='Username:'
-        type='text'
-        className='username-input'
-        value={username}
-        setValue={setUsername}
-        icon={faUser}
+          label='Username:'
+          type='text'
+          className='username-input'
+          value={username}
+          setValue={setUsername}
+          icon={faUser}
         />
         <Input
-        label='Password:'
-        type='text'
-        className='password-input'
-        value={password}
-        setValue={setPassword}
-        icon={faKey}
+          label='Password:'
+          type='text'
+          className='password-input'
+          value={password}
+          setValue={setPassword}
+          icon={faKey}
         />
       </div>
       <div className='sign-on-container'>
         <Button
-          label='Sign Up'
-          className='sign-on-button'
-          onClick={handleSignUp}
-          icon={faPlus}
+            label='Sign Up'
+            className='sign-on-button'
+            onClick={handleSignUp}
+            icon={faPlus}
         />
       </div>
     </>

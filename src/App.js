@@ -10,7 +10,7 @@ function App() {
     // Get the access token from local storage only when
     // the component mounts
     const accessToken = localStorage.getItem('accessToken');
-    console.log('Access Token is:', accessToken);
+    // console.log('Access Token is:', accessToken);
 
     // Send post request to /api/auth/ with auth header
     // set to Bearer <accessToken>
@@ -36,12 +36,12 @@ function App() {
       }
     }
 
-    authRequest();
+    // authRequest();
   }, [])
 
   return (
     <div className="App">
-      {isLoggedIn ? <Dashboard /> : <Authentication />}
+      {isLoggedIn ? '<Dashboard />' : <Authentication setIsLoggedIn={setIsLoggedIn} setUserUsername={setUserUsername} />}
     </div>
   );
 }

@@ -7,9 +7,10 @@ export default function Button({
   className,
   onClick,
   icon = null,
+  type = 'submit',
 }) {
   return (
-    <button className={className} onClick={onClick}>
+    <button type={type} className={className} onClick={onClick}>
       {icon && <FontAwesomeIcon icon={icon} className='button-icon'></FontAwesomeIcon>}
       {label}
     </button>
