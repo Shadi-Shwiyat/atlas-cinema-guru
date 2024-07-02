@@ -64,7 +64,7 @@ export default function Authentication({
               if (response.status === 200) {
                 return response.data;
               } else {
-                throw new Error('Registration failed');
+                throw new Error('Registration failed, Status code:', response.status);
               }
             })
             // Store access token in local storage
