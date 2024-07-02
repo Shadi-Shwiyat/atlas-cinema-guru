@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Authentication from './routes/auth/Authentication';
+import Dashboard from './routes/dashboard/Dashboard';
 import './App.css';
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
 
   return (
     <div className="App">
-      {isLoggedIn ? '<Dashboard />' : <Authentication className='authentication' setIsLoggedIn={setIsLoggedIn} setUserUsername={setUserUsername} />}
+      {isLoggedIn ? <Dashboard userUsername={userUsername} setIsLoggedIn={setIsLoggedIn} /> : <Authentication setIsLoggedIn={setIsLoggedIn} setUserUsername={setUserUsername} />}
     </div>
   );
 }
