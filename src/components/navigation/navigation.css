@@ -38,6 +38,94 @@
 
 /* ------ SideBar.js ------ */
 
+.sidebar-container {
+  background-color: #BB000E;
+  position: fixed;
+  height: 100vh;
+}
 
+.sidebar-small {
+  width: 53px;
+}
+
+.sidebar-large {
+  width: 230px;
+}
+
+.page-nav-element {
+  color: #FFF;
+}
+
+.page-nav-element ul {
+  list-style: none;
+  padding: 0;
+  padding-top: 16px;
+  margin: 0;
+}
+
+.page-nav-element ul li {
+  font-size: 19px;
+  padding: 16px;
+  position: relative;
+}
+
+.selected {
+  background-color: #E31C25;
+}
+
+.page-nav-small {
+  margin-top: 0;
+}
+
+.hide-page-nav-small {
+  display: none;
+}
+
+.page-nav-large {
+  margin-top: 0;
+}
+
+.hide-page-nav-large {
+  display: none;
+}
+
+.nav-icons {
+  margin-right: 9px
+}
+
+.arrow-right {
+  position: absolute;
+  right: 9%;
+  top: 33%;
+}
+
+.activities-container {
+  padding: 6px;
+  margin: 6px;
+  background-color: #2C2C2C;
+  position: relative;
+}
+
+.activities-container h3 {
+  font-size: 26px;
+  text-wrap: nowrap;
+  text-align: center;
+  margin: 0;
+  margin-top: 6px;
+}
+
+.activities-container span {
+  display: block;
+  width: 90%;
+  height: 2px;
+  background-color: #FFF;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.hide-activities {
+  display: none;
+}
 
 /* ------------------------ */
