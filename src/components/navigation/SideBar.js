@@ -56,6 +56,7 @@ export default function SideBar() {
       try {
         const accessToken = localStorage.getItem('accessToken');
 
+        // Send access token for user to fetch activities
         const response = await axios.get('http://localhost:8000/api/activity', {
           headers: {
             'Authorization': `Bearer ${accessToken}`,
@@ -66,7 +67,7 @@ export default function SideBar() {
         // Check is response is ok and save it into activities state array
         if (response.status === 200) {
           setActivities(response.data.slice(0, 10));
-          console.log('Activities retrieved successfully!', activities);
+          // console.log('Activities retrieved successfully!', activities);
         } else {
           throw new Error(`Error fetching activity data, Status code: ${response.status}`);
         }
