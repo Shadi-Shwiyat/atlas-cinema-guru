@@ -13,6 +13,7 @@ export default function MovieCard({
   useEffect(() => {
     const checkMovieStatus = async () => {
       const accessToken = localStorage.getItem('accessToken');
+      console.log(movie.imdbId);
 
       // Fetch users favorite and watch later movie history
       try {
@@ -34,7 +35,7 @@ export default function MovieCard({
               break;
             }
           }
-          console.log('Successfully retrieved favorite movies!');
+          // console.log('Successfully retrieved favorite movies!');
         } else {
           throw new Error(`Error fetching favorites data, Status code: ${favoriteResponse.status}`);
         }
@@ -57,7 +58,7 @@ export default function MovieCard({
               break;
             }
           }
-          console.log('Successfully retrieved watch later movies!');
+          // console.log('Successfully retrieved watch later movies!');
         } else {
           throw new Error(`Error fetching watch later data, Status code: ${watchlaterResponse.status}`);
         }
@@ -81,10 +82,10 @@ export default function MovieCard({
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            data: { 'imdbId': movie.imdbId }
+            params: { 'imdbId': movie.imdbId }
           })
           setIsFavorite(false);
-          console.log('Successfully deleted favorite movie!');
+          // console.log('Successfully deleted favorite movie!');
         } else {
           await axios.post('http://localhost:8000/api/titles/favorite', {
             headers: {
@@ -92,10 +93,10 @@ export default function MovieCard({
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            data: { 'imdbId': movie.imdbId }
+            params: { 'imdbId': movie.imdbId }
           })
           setIsFavorite(true);
-          console.log('Successfully added favorite movie!');
+          // console.log('Successfully added favorite movie!');
         }
       } else if (type == 'watchlater') {
         if(isWatchLater) {
@@ -105,10 +106,10 @@ export default function MovieCard({
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            data: { 'imdbId': movie.imdbId }
+            params: { 'imdbId': movie.imdbId }
           })
           setIsWatchLater(false);
-          console.log('Successfully deleted watch later movie!');
+          // console.log('Successfully deleted watch later movie!');
         } else {
           await axios.post('http://localhost:8000/api/titles/watchlater', {
             headers: {
@@ -116,10 +117,10 @@ export default function MovieCard({
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            data: { 'imdbId': movie.imdbId }
+            params: { 'imdbId': movie.imdbId }
           })
           setIsWatchLater(true);
-          console.log('Successfully added watch later movie!');
+          // console.log('Successfully added watch later movie!');
         }
       }
     } catch (error) {

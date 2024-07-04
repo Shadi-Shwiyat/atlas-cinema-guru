@@ -19,9 +19,12 @@ export default function Tag({
     }
   }
 
-  // useEffect(() => {
-  //   console.log('Updated genre array:', genres);
-  // }, [genres])
+  useEffect(() => {
+    if (!genres.includes(genre)) {
+      setSelected(false);
+    }
+    // console.log('Updated genre array:', genres);
+  }, [genres])
 
   return (
     <li className={`tag-li-element ${selected ? 'selected' : ''}`} onClick={handleTag}>

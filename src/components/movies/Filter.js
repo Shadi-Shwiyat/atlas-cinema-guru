@@ -39,6 +39,7 @@ export default function Filter({
             className='min-year-input'
             value={minYear}
             setValue={setMinYear}
+            inputAttributes={{min: 1970, max: 2022}}
           />
           <Input
             label='Max Date:'
@@ -46,6 +47,7 @@ export default function Filter({
             className='max-year-input'
             value={maxYear}
             setValue={setMaxYear}
+            inputAttributes={{min: 1970, max: 2022}}
           />
           <SelectInput
             label='Sort:'
