@@ -42,6 +42,7 @@
   background-color: #BB000E;
   position: fixed;
   height: 100vh;
+  z-index: 3;
 }
 
 .sidebar-small {

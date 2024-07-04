@@ -1,0 +1,49 @@
+/* ------ Tag.js ------ */
+
+.tag-li-element {
+  color: #FFF;
+  height: 26px;
+  text-align: center;
+  list-style: none;
+  border: 2px solid #E31C25;
+  border-radius: 90px;
+  padding: 3px 13px 0px 13px;
+  margin: 6px 9px;
+  text-wrap: nowrap;
+}
+
+.selected {
+  background-color: #E31C25;
+}
+
+/* -------------------- */
+
+/* ------ Filter.js ------ */
+
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 48px;
+}
+
+.year-sort-container {
+  display: flex;
+  margin-top: 16px;
+}
+
+.min-year-input {
+  margin-right: 40px;
+}
+
+.max-year-input {
+  margin-right: 40px;
+}
+
+.tags-container {
+  display: flex;
+  width: 660px!important;
+  flex-wrap: wrap;
+  margin-right: 60px;
+}
+
+/* ----------------------- */
