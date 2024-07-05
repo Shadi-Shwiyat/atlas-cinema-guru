@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from "react";
-import './movies.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock, faStar } from "@fortawesome/free-regular-svg-icons";
+import { faClock as faClockRegular, faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
+import { faClock as faClockSolid, faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons";
+import unavailable from '../../assets/unavailable.png';
 import axios from "axios";
+import './movies.css';
 
 export default function MovieCard({
   movie,
 }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isWatchLater, setIsWatchLater] = useState(false);
+  const [imgSrc, setImgSrc] = useState(movie.imageurls);
   
   useEffect(() => {
+    setImgSrc(movie.imageurls);
+
     const checkMovieStatus = async () => {
       const accessToken = localStorage.getItem('accessToken');
       console.log(movie.imdbId);
@@ -128,17 +133,37 @@ export default function MovieCard({
     }
   }
 
+  const handleError = () => {
+    setImgSrc(unavailable);
+  }
+
+  const formatTitle = (title) => {
+    if (title.length >= 25) {
+      return title.substring(0, 23) + '...';
+    } else {
+      return title;
+    }
+  }
+
+  const formatSynopsis = (synopsis) => {
+    if (synopsis && synopsis.length >= 103) {
+      return synopsis.substring(0, 103) + '...';
+    } else {
+      return synopsis;
+    }
+  }
+
   return (
     <div className="movie-card-container">
       <li>
         <div className="card-thumbnail-container">
-          <FontAwesomeIcon icon={faClock} className={isWatchLater ? 'watch-later' : ''} onClick={() => handleClick('favorite')}></FontAwesomeIcon>
-          <FontAwesomeIcon icon={faStar} className={isFavorite ? 'favorite' : ''} onClick={() => handleClick('watchlater')}></FontAwesomeIcon>
-          <img className="card-thumbnail" src={movie.imageurls} alt={`${movie.title} thumbnail`}></img>
-          <h1 className="card-title">{movie.title}</h1>
+          <FontAwesomeIcon icon={isWatchLater ? faClockSolid : faClockRegular} className={`watch-later-icon`} onClick={() => handleClick('watchlater')}></FontAwesomeIcon>
+          <FontAwesomeIcon icon={isFavorite ? faStarSolid : faStarRegular} className={`favorite-icon`} onClick={() => handleClick('favorite')}></FontAwesomeIcon>
+          <img className="card-thumbnail" src={imgSrc} alt={`${movie.title} thumbnail`} onError={handleError}></img>
+          <h1 className="card-title">{formatTitle(movie.title)}</h1>
         </div>
         <div className="card-info-container">
-          <p className="card-description">{movie.synopsis}</p>
+          <p className="card-description">{formatSynopsis(movie.synopsis)}</p>
           <div className="card-genres-container">
             {movie.genres.map((genre, index) => (
               <p key={index} className="card-genre">{genre}</p>

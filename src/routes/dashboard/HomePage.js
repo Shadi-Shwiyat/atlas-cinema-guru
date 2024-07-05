@@ -85,12 +85,14 @@ export default function HomePage() {
         title={title}
         setTitle={setTitle}
       />
-      {movies.slice(2,3).map((movie, index) => (
-        <MovieCard
-          key={index}
-          movie={movie}
-        />
-      ))}
+      <div className="movies-container">
+        {movies.map((movie, index) => (
+          <MovieCard
+            key={index}
+            movie={movie}
+          />
+        ))}
+      </div>
       <div className="page-button-container">
         <Button
           label='Load More...'

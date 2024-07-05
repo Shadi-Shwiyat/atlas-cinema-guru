@@ -23,7 +23,7 @@
 .filter-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 48px;
+  margin-top: 83px;
 }
 
 .year-sort-container {
@@ -41,9 +41,106 @@
 
 .tags-container {
   display: flex;
-  width: 660px!important;
+  width: 690px!important;
   flex-wrap: wrap;
-  margin-right: 60px;
+  margin-right: 0px;
+}
+
+/* ----------------------- */
+
+/* ------ MovieCard.js ------ */
+
+.movie-card-container {
+  background-color: #2C2C2C;
+  color: #FFF;
+  width: 300px;
+  height: 400px;
+  margin: 16px 21px;
+}
+
+.movie-card-container li {
+  list-style: none;
+}
+
+
+.card-thumbnail-container {
+  position: relative;
+}
+
+.watch-later-icon {
+  position: absolute;
+  top: 11.5px;
+  right: 39px;
+  height: 20px;
+  width: 20px;
+  z-index: 1;
+}
+
+.watch-later-icon:hover {
+  cursor: pointer;
+  color: #ffffffbf;
+}
+
+.favorite-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  height: 26px;
+  width: 23px;
+  z-index: 1;
+}
+
+.favorite-icon:hover {
+  cursor: pointer;
+  color: #ffffffbf;
+}
+
+.card-thumbnail {
+  position: absolute;
+  top: 0;
+  height: 300px;
+  width: 300px;
+  z-index: 0;
+}
+
+.card-title {
+  position: absolute;
+  top: 245px;
+  width: 285px;
+  font-weight: lighter;
+  font-size: 23px;
+  text-wrap: nowrap;
+  background-color: #00000073;
+  padding: 6px;
+  padding-left: 9px;
+  z-index: 1!important;
+}
+
+.card-info-container {
+  position: relative;
+  top: 303px;
+  width: 290px;
+}
+
+.card-description {
+  position: absolute;
+  font-size: 13px;
+  margin: 0px 9px;
+  top: 6px;
+}
+
+.card-genres-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.card-genre {
+  font-size: 16px;
+  margin: 66px 6px;
+  background-color: #E31C25;
+  padding: 0px 9px;
+  border-radius: 90px;
 }
 
 /* ----------------------- */

@@ -1,8 +1,43 @@
-/* Test css */
-.tags-container {
-  display: flex;
+/* ------ DashBoard.js ------ */
+
+.dashboard-container {
+  margin: 0;
+  margin-top: 60px;
 }
+
+/* -------------------------- */
+
+/* ------ HomePage.js ------ */
 
 .homepage-container {
   margin-left: 6.6rem;
 }
+
+.movies-container {
+  margin: 20px 19px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 90vw;
+}
+
+.page-button-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 30px;
+}
+
+.load-button {
+  font-size: 19px;
+  color: #ffffff;
+  padding: 13px;
+  border: none;
+  background-color: #BB000E;
+}
+
+.load-button:hover {
+  background-color: #E31C25;
+  cursor: pointer;
+}
+
+/* ------------------------ */
