@@ -13,7 +13,7 @@ export default function Activity({
 
   return (
     <li className="activity-element">
-      <p><span>{activity.user.username}</span> added <span>{activity.title.title}</span> to {activity.activityType == 'favorite' ? 'favorites' : 'watch later'} - {formatDate(activity.updatedAt)}</p>
+      <p><span>{activity.user.username}</span> {activity.activityType == 'favorite' ? 'added' : 'removed'} <span>{activity.title.title}</span> to {activity.activityType == 'favorite' ? 'favorites' : 'watch later'} - {formatDate(activity.updatedAt)}</p>
     </li>
   )
 }

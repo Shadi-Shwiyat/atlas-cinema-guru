@@ -41,3 +41,57 @@
 }
 
 /* ------------------------ */
+
+/* ------ Favorites.js ------ */
+
+.favorites-container {
+  margin-left: 6.6rem;
+  margin-top: 90px;
+}
+
+.favorites-title {
+  text-align: center;
+  color: #ffffff;
+  font-size: 69px;
+  font-weight: lighter;
+  font-stretch:ultra-expanded;
+  padding-top: 30px;
+  margin-bottom: 0px;
+}
+
+.favorites-container span {
+  display: block;
+  width: 569px;
+  height: 3px;
+  background-color: #E31C25;
+  margin: 0 auto;
+}
+
+/* -------------------------- */
+
+/* ------ WatchLater.js ------ */
+
+.watch-later-container {
+  margin-left: 6.6rem;
+  margin-top: 90px;
+}
+
+.watch-later-title {
+  text-align: center;
+  color: #ffffff;
+  font-size: 69px;
+  font-weight: lighter;
+  font-stretch:ultra-expanded;
+  padding-top: 30px;
+  margin-bottom: 0px;
+}
+
+.watch-later-container span {
+  display: block;
+  width: 846px;
+  height: 3px;
+  background-color: #E31C25;
+  margin: 0 auto;
+}
+
+/* -------------------------- */

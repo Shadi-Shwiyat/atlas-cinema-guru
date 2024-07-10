@@ -23,7 +23,7 @@
 .filter-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 83px;
+  margin-top: 90px;
 }
 
 .year-sort-container {
@@ -101,6 +101,10 @@
   height: 300px;
   width: 300px;
   z-index: 0;
+}
+
+.error-thumbnail {
+  opacity: 80%;
 }
 
 .card-title {

@@ -5,7 +5,10 @@ import Button from "../../components/general/Button.js";
 import './dashboard.css';
 import axios from "axios";
 
-export default function HomePage() {
+export default function HomePage({
+  clickToggle,
+  setClickToggle
+}) {
   const [movies, setMovies] = useState([]);
   const [minYear, setMinYear] = useState(1970);
   const [maxYear, setMaxYear] = useState(2022);
@@ -90,6 +93,8 @@ export default function HomePage() {
           <MovieCard
             key={index}
             movie={movie}
+            clickToggle={clickToggle}
+            setClickToggle={setClickToggle}
           />
         ))}
       </div>

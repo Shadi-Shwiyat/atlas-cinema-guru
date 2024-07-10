@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../components/navigation/Header";
 import SideBar from "../../components/navigation/SideBar";
 import HomePage from "./HomePage";
@@ -11,6 +11,8 @@ export default function Dashboard({
   userUsername,
   setIsLoggedIn,
 }) {
+  const [clickToggle, setClickToggle] = useState(false);
+
   return (
     <BrowserRouter>
       <div className="dashboard-container">
@@ -18,12 +20,15 @@ export default function Dashboard({
           userUsername={userUsername}
           setIsLoggedIn={setIsLoggedIn}
         />
-        <SideBar />
+        <SideBar
+          clickToggle={clickToggle}
+          setClickToggle={setClickToggle}
+        />
       </div>
       <Routes>
-        <Route path="/home" element={<HomePage />}></Route>
-        <Route path="/favorites" element={<Favorites />}></Route>
-        <Route path="/watchlater" element={<WatchLater />}></Route>
+        <Route path="/home" element={<HomePage clickToggle={clickToggle} setClickToggle={setClickToggle} />}></Route>
+        <Route path="/favorites" element={<Favorites clickToggle={clickToggle} setClickToggle={setClickToggle} />}></Route>
+        <Route path="/watchlater" element={<WatchLater clickToggle={clickToggle} setClickToggle={setClickToggle} />}></Route>
         <Route path="/" element={<Navigate to="/home" />} />
       </Routes>
     </BrowserRouter>

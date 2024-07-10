@@ -6,7 +6,10 @@ import { faFolder, faStar, faClock, faArrowRight } from '@fortawesome/free-solid
 import Activity from "../Activity";
 import './navigation.css';
 
-export default function SideBar() {
+export default function SideBar({
+  clickToggle,
+  setClickToggle
+}) {
   const [selected, setSelected] = useState('home');
   const [small, setSmall] = useState(true);
   const [activities, setActivities] = useState([]);
@@ -49,35 +52,39 @@ export default function SideBar() {
     }
   }, [selected, navigate])
 
-  useEffect(() => {
-    // Sending get request to /api/activity to get recent
-    // user activity
-    const fetchActivities = async () => {
-      try {
-        const accessToken = localStorage.getItem('accessToken');
+  // Sending get request to /api/activity to get recent
+  // user activity
+  const fetchActivities = async () => {
+    try {
+      const accessToken = localStorage.getItem('accessToken');
 
-        // Send access token for user to fetch activities
-        const response = await axios.get('http://localhost:8000/api/activity', {
-          headers: {
-            'Authorization': `Bearer ${accessToken}`,
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          }
-        });
-        // Check is response is ok and save it into activities state array
-        if (response.status === 200) {
-          setActivities(response.data.slice(0, 10));
-          // console.log('Activities retrieved successfully!', activities);
-        } else {
-          throw new Error(`Error fetching activity data, Status code: ${response.status}`);
+      // Send access token for user to fetch activities
+      const response = await axios.get('http://localhost:8000/api/activity', {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
         }
-      } catch (error) {
-        console.error('An error occured when fetching activity data:', error);
+      });
+      // Check is response is ok and save it into activities state array
+      if (response.status === 200) {
+        setActivities(response.data.slice(0, 10));
+        // console.log('Activities retrieved successfully!', activities);
+      } else {
+        throw new Error(`Error fetching activity data, Status code: ${response.status}`);
       }
+    } catch (error) {
+      console.error('An error occured when fetching activity data:', error);
     }
+  }
 
+  useEffect(() => {
     fetchActivities();
   }, [])
+
+  useEffect(() => {
+    fetchActivities();
+  }, [clickToggle])
 
   return (
     <div className={`sidebar-container ${small ? 'sidebar-small' : 'sidebar-large'}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
@@ -94,9 +101,9 @@ export default function SideBar() {
         </ul>
         <div className={`activities-container ${showActivities ? 'show-activities' : 'hide-activities'}`}>
           <h3>Latest Activities</h3>
-          <span></span>
+          <span className="activities-span"></span>
           <ul className="activities-list">
-            {activities.map((activity, index) => (
+            {activities.slice(0, 10).map((activity, index) => (
               <Activity key={index} activity={activity} />
             ))}
           </ul>

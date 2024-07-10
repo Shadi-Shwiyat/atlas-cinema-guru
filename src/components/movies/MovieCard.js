@@ -8,17 +8,21 @@ import './movies.css';
 
 export default function MovieCard({
   movie,
+  clickToggle,
+  setClickToggle,
 }) {
   const [isFavorite, setIsFavorite] = useState(false);
   const [isWatchLater, setIsWatchLater] = useState(false);
   const [imgSrc, setImgSrc] = useState(movie.imageurls);
+  const [error, setError] = useState(false);
   
   useEffect(() => {
     setImgSrc(movie.imageurls);
+    // console.log(`${movie.title} was released: ${movie.released}`);
 
     const checkMovieStatus = async () => {
       const accessToken = localStorage.getItem('accessToken');
-      console.log(movie.imdbId);
+      // console.log(movie.imdbId);
 
       // Fetch users favorite and watch later movie history
       try {
@@ -78,62 +82,64 @@ export default function MovieCard({
   const handleClick = async (type) => {
     try {
       const accessToken = localStorage.getItem('accessToken');
+      // console.log('Access token is:', accessToken);
 
       if (type == 'favorite') {
         if(isFavorite) {
-          await axios.delete('http://localhost:8000/api/titles/favorite', {
+          await axios.delete(`http://localhost:8000/api/titles/favorite/${movie.imdbId}`, {
             headers: {
               'Authorization': `Bearer ${accessToken}`,
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            params: { 'imdbId': movie.imdbId }
           })
           setIsFavorite(false);
-          // console.log('Successfully deleted favorite movie!');
+          console.log('Successfully deleted favorite movie!');
         } else {
-          await axios.post('http://localhost:8000/api/titles/favorite', {
+          // console.log('Imbd id is:', movie.imdbId);
+          await axios.post(`http://localhost:8000/api/titles/favorite/${movie.imdbId}`, {}, {
             headers: {
               'Authorization': `Bearer ${accessToken}`,
               'Accept': 'application/json',
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
             },
-            params: { 'imdbId': movie.imdbId }
           })
           setIsFavorite(true);
-          // console.log('Successfully added favorite movie!');
+          console.log('Successfully added favorite movie!');
         }
       } else if (type == 'watchlater') {
         if(isWatchLater) {
-          await axios.delete('http://localhost:8000/api/titles/watchlater', {
+          await axios.delete(`http://localhost:8000/api/titles/watchlater/${movie.imdbId}`, {
             headers: {
               'Authorization': `Bearer ${accessToken}`,
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            params: { 'imdbId': movie.imdbId }
           })
           setIsWatchLater(false);
-          // console.log('Successfully deleted watch later movie!');
+          console.log('Successfully deleted watch later movie!');
         } else {
-          await axios.post('http://localhost:8000/api/titles/watchlater', {
+          await axios.post(`http://localhost:8000/api/titles/watchlater/${movie.imdbId}`, {}, {
             headers: {
               'Authorization': `Bearer ${accessToken}`,
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            params: { 'imdbId': movie.imdbId }
           })
           setIsWatchLater(true);
-          // console.log('Successfully added watch later movie!');
+          console.log('Successfully added watch later movie!');
         }
       }
+
+      // Toggle click to refresh favorite and watch later movies
+      setClickToggle(prev => !prev);
     } catch (error) {
       console.error('There was an error adding or removing favorites or watch later history', error);
     }
   }
 
   const handleError = () => {
+    setError(true);
     setImgSrc(unavailable);
   }
 
@@ -146,8 +152,8 @@ export default function MovieCard({
   }
 
   const formatSynopsis = (synopsis) => {
-    if (synopsis && synopsis.length >= 103) {
-      return synopsis.substring(0, 103) + '...';
+    if (synopsis && synopsis.length >= 123) {
+      return synopsis.substring(0, 123) + '...';
     } else {
       return synopsis;
     }
@@ -159,7 +165,7 @@ export default function MovieCard({
         <div className="card-thumbnail-container">
           <FontAwesomeIcon icon={isWatchLater ? faClockSolid : faClockRegular} className={`watch-later-icon`} onClick={() => handleClick('watchlater')}></FontAwesomeIcon>
           <FontAwesomeIcon icon={isFavorite ? faStarSolid : faStarRegular} className={`favorite-icon`} onClick={() => handleClick('favorite')}></FontAwesomeIcon>
-          <img className="card-thumbnail" src={imgSrc} alt={`${movie.title} thumbnail`} onError={handleError}></img>
+          <img className={`card-thumbnail ${error ? 'error-thumbnail' : ''}`} src={imgSrc} alt={`${movie.title} thumbnail`} onError={handleError}></img>
           <h1 className="card-title">{formatTitle(movie.title)}</h1>
         </div>
         <div className="card-info-container">
